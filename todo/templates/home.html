@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block content%}
+<br>
+<br>
+   <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">work</th>
+      <th scope="col">Date</th>
+      <th scope="col">Update</th>
+            <th scope="col">Trash</th>
+    </tr>
+  </thead>
+  {%for work in works%}
+  <tbody>
+    <tr>
+      <th scope="row">{{work.id}}</th>
+      <td>{{work.work}}</td>
+      <td>{{work.date.date()}}</td>
+      <td><a href = '/work/update/{{work.id}}' class = 'btn btn-primary'>Update</a></td>
+      <td><a href = '/work/delete/{{work.id}}' class = 'btn btn-danger'>Delete</a></td>
+    </tr>
+    </tbody>
+    {%endfor%}
+</table>
+
+<form method="POST">
+	<input type = 'text' name = 'work' placeholder="work" class = 'form-control'>
+	<br>
+	<button type = 'submit' class = 'btn btn-primary'>Post</button>
+</form>
+{%endblock%}
